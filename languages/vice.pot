@@ -1,4 +1,3 @@
-# Copyright (C) 2015 Automattic
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
@@ -206,10 +205,5 @@ msgstr ""
 
 #. Author of the plugin/theme
 #@ _s
-msgid "Automattic"
-msgstr ""
-
-#. Author URI of the plugin/theme
-#@ _s
-msgid "http://automattic.com/"
+msgid "Saumya"
 msgstr ""

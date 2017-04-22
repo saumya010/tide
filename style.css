@@ -1,20 +1,17 @@
 /*
-Theme Name: vice
-Theme URI: http://github.com/saumya010/vice
+Theme Name: Tide
+Theme URI: http://github.com/saumya010/tide
 Author: Saumya Sharma
 Author URI: http://github.com/saumya010
 Description: Blogging theme
-Version: 1.0.5
+Version: 1.0.0
 License: GNU General Public License, version 3 (GPLv3)
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
-Text Domain: vice
+Text Domain: tide
 Tags: right-sidebar, featured-images
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
-
-vice is based on Underscores http://underscores.me/, (C) 2012-2015 Automattic, Inc.
-Underscores is distributed under the terms of the GNU GPL v3 or later.
 
 Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
@@ -580,10 +577,11 @@ a:active {
 }
 
 .main-navigation ul ul {
+    background: #fff;
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
     float: left;
     position: absolute;
-    top: 1.5em;
+    top: 2.5em;
     left: -999em;
     z-index: 99999;
 }
@@ -1027,9 +1025,28 @@ aside#secondary {
 }
 
 .home .site-content {
-    background-image: url(/wp-content/themes/vice/images/content-bg.png);
+    background-image: url(images/content-bg.png);
     background-repeat: repeat;
 }
+
+/* Author section */
+.tide-author-section {
+    padding: 5px 10px;
+}
+.tide-author-img {
+    float: left;
+    line-height: 0;
+}
+.tide-author-img img {
+    border-radius: 50%;
+}
+.tide-author-name {
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 4px;
+}
+
+/* Masonry */
 
 .masonry-wrapper {
     margin: 0 auto;
@@ -1038,16 +1055,23 @@ aside#secondary {
 
 .masonry-item {
     background-color: #fff;
+    box-shadow: 0px 5px 15px #333;
     float: left;
     margin-bottom: 25px;
-    padding: 30px;
     position: relative;
     width: 320px;
 }
 
 .masonry-image {
     line-height: 0;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.masonry-image img {
+    transition: all .6s ease;
+}
+.masonry-image:hover img {
+    transform: scale(1.1);
 }
 
 .masonry-item .entry-title {
@@ -1061,10 +1085,16 @@ aside#secondary {
 
 .masonry-item .entry-content {
     margin-top: 0;
+    padding: 0 15px;
 }
 
 .masonry-item .entry-content p {
-    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+.masonry-item .entry-footer {
+    background-color: #444;
+    padding: 15px;
 }
 
 .masonry-tags a {
@@ -1074,10 +1104,13 @@ aside#secondary {
 }
 
 .entry-footer a {
-    color: rgb(255, 0, 0);
+    color: #ff0000;
+}
+.masonry-item .entry-footer a {
+    color: #fff;
 }
 
-.home .entry-footer a:hover {
+.masonry-item .entry-footer a:hover {
     padding-left: 10px;
     transition: .3s all ease-in;
 }
@@ -1087,6 +1120,8 @@ aside#secondary {
     font-family: fontAwesome;
     margin-right: 10px;
 }
+
+/* Sidebar */
 
 .sidebar ul {
     margin: 0;
@@ -1119,7 +1154,8 @@ aside#secondary {
 }
 
 .nav-previous a, .nav-next a {
-    background: #f1f1f1;
+    background: #444;
+    color: #fff;
     display: inline-block;
     padding: 10px 20px;
 }

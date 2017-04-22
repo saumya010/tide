@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package vice
+ * @package tide
  */
 
 ?>
@@ -16,9 +16,9 @@
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="site-info">
-			<a href="<?php echo esc_url('https://wordpress.org/'); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'vice' ), 'WordPress' ); ?></a>
+			<a href="<?php echo esc_url('https://wordpress.org/'); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'tide' ), 'WordPress' ); ?></a>
 			<span class="sep"> | </span>
-			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'vice' ), 'Vice', '<a href="http://github.com/saumya010" rel="designer">Saumya Sharma</a>' ); ?>
+			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'tide' ), 'tide', '<a href="http://github.com/saumya010" rel="designer">Saumya Sharma</a>' ); ?>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->

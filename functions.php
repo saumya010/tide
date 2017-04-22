@@ -1,13 +1,13 @@
 <?php
 /**
- * vice functions and definitions.
+ * tide functions and definitions.
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package vice
+ * @package tide
  */
 
-if (!function_exists('vice_setup')) :
+if (!function_exists('tide_setup')) :
     /**
      * Sets up theme defaults and registers support for various WordPress features.
      *
@@ -15,15 +15,15 @@ if (!function_exists('vice_setup')) :
      * runs before the init hook. The init hook is too late for some features, such
      * as indicating support for post thumbnails.
      */
-    function vice_setup()
+    function tide_setup()
     {
         /*
          * Make theme available for translation.
          * Translations can be filed in the /languages/ directory.
-         * If you're building a theme based on vice, use a find and replace
-         * to change 'vice' to the name of your theme in all the template files.
+         * If you're building a theme based on tide, use a find and replace
+         * to change 'tide' to the name of your theme in all the template files.
          */
-        load_theme_textdomain('vice', get_template_directory() . '/languages');
+        load_theme_textdomain('tide', get_template_directory() . '/languages');
 
         // Add default posts and comments RSS feed links to head.
         add_theme_support('automatic-feed-links');
@@ -45,7 +45,7 @@ if (!function_exists('vice_setup')) :
 
         // This theme uses wp_nav_menu() in one location.
         register_nav_menus(array(
-            'primary' => esc_html__('Primary', 'vice'),
+            'primary' => esc_html__('Primary', 'tide'),
         ));
 
         /*
@@ -73,13 +73,13 @@ if (!function_exists('vice_setup')) :
         ));
 
         // Set up the WordPress core custom background feature.
-        add_theme_support('custom-background', apply_filters('vice_custom_background_args', array(
+        add_theme_support('custom-background', apply_filters('tide_custom_background_args', array(
             'default-color' => 'ffffff',
             'default-image' => '',
         )));
     }
 endif;
-add_action('after_setup_theme', 'vice_setup');
+add_action('after_setup_theme', 'tide_setup');
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -88,22 +88,22 @@ add_action('after_setup_theme', 'vice_setup');
  *
  * @global int $content_width
  */
-function vice_content_width()
+function tide_content_width()
 {
-    $GLOBALS['content_width'] = apply_filters('vice_content_width', 640);
+    $GLOBALS['content_width'] = apply_filters('tide_content_width', 640);
 }
 
-add_action('after_setup_theme', 'vice_content_width', 0);
+add_action('after_setup_theme', 'tide_content_width', 0);
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function vice_widgets_init()
+function tide_widgets_init()
 {
     register_sidebar(array(
-        'name' => esc_html__('Sidebar', 'vice'),
+        'name' => esc_html__('Sidebar', 'tide'),
         'id' => 'sidebar-1',
         'description' => '',
         'before_widget' => '<section id="%1$s" class="widget %2$s">',
@@ -113,36 +113,36 @@ function vice_widgets_init()
     ));
 }
 
-add_action('widgets_init', 'vice_widgets_init');
+add_action('widgets_init', 'tide_widgets_init');
 
 /**
  * Enqueue scripts and styles.
  */
-function vice_scripts()
+function tide_scripts()
 {
-    wp_enqueue_style('vice-style', get_stylesheet_uri());
+    wp_enqueue_style('tide-style', get_stylesheet_uri());
 
     $fonts_url = 'https://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans:400,700';
     if (!empty($fonts_url)) {
         wp_enqueue_style('font-name', esc_url_raw($fonts_url), array(), null);
     }
 
-    wp_enqueue_style('vice-fontawesome', get_template_directory_uri() . '/css/font-awesome.css', array(), '4.0.3', 'all');
+    wp_enqueue_style('font-awesome', get_template_directory_uri() . '/css/font-awesome.css', array(), '4.0.3', 'all');
 
-    wp_enqueue_script('vice-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true);
+    wp_enqueue_script('tide-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true);
 
     wp_enqueue_script('masonry');
 
-    wp_enqueue_script('masonry-init', get_template_directory_uri() . '/js/masonry-init.js', array('jquery'), '2013011156', true);
+    wp_enqueue_script('tide-masonry-init', get_template_directory_uri() . '/js/masonry-init.js', array('jquery'), '2013011156', true);
 
-    wp_enqueue_script('vice-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true);
+    wp_enqueue_script('tide-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true);
 
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
     }
 }
 
-add_action('wp_enqueue_scripts', 'vice_scripts');
+add_action('wp_enqueue_scripts', 'tide_scripts');
 
 /**
  * Implement the Custom Header feature.
@@ -173,19 +173,28 @@ require get_template_directory() . '/inc/jetpack.php';
  * Limit content
  */
 
-add_filter("the_content", "vice_limit_content");
+add_filter("the_content", "tide_limit_content");
 
-function vice_limit_content($content)
+function tide_limit_content($content)
 {
     // Take the existing content and return a subset of it
-    return substr($content, 0, 200);
+    if( is_home() ) {
+        return substr($content, 0, 200);
+    }
+    else
+    return $content;
 }
+
+function tide_excerpt_length( $length ) {
+    return 200;
+}
+add_filter( 'excerpt_length', 'tide_excerpt_length', 999 );
 
 /**
  * Add editor styles
  */
 
-function vice_theme_add_editor_styles() {
+function tide_theme_add_editor_styles() {
     add_editor_style( 'style.css' );
 }
-add_action( 'admin_init', 'vice_theme_add_editor_styles' );
+add_action( 'admin_init', 'tide_theme_add_editor_styles' );

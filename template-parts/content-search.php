@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package vice
+ * @package tide
  */
 
 ?>
@@ -15,7 +15,7 @@
 
 		<?php if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
-			<?php vice_posted_on(); ?>
+			<?php tide_posted_on(); ?>
 		</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
@@ -25,6 +25,7 @@
 	</div><!-- .entry-summary -->
 
 	<footer class="entry-footer">
-		<?php vice_entry_footer(); ?>
+		<?php echo '<a class="more-link" href="' . get_permalink() . '">'.__('Read More', 'tide').'</a>' ?>
+		<?php tide_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->
